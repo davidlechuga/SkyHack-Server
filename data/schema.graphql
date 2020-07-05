@@ -1,0 +1,58 @@
+""" Se Consulta a un Solo Usuario con este Query """
+
+    type Query { 
+        #Trae todos los Usuarios
+        getUsuarios (limite: Int) : [Usuario]
+        # Trae solo un Usuario
+        getUsuario(id: ID): Usuario
+    }
+
+    type Usuario {
+        id: ID
+        nombre: String
+        apellido: String
+        empresa: String
+        edad: Int
+        emails: [Email]
+        tipo : TipoUsuario
+    }
+
+    type Email {
+        email: String
+    }
+
+    enum TipoUsuario {
+        Unam
+        Externo
+        Otro
+    }
+    
+    #FIN DE LOS QUERYS
+    #FIN DE LOS QUERYS
+    #FIN DE LOS QUERYS
+    #FIN DE LOS QUERYS
+
+    """ Se Crea, Modificar, o eliminar un Nuevo Usuario con este Mutation """
+
+    type Mutation {
+        # Crear un Usuario 
+        crearUsuario(input: UsuarioInput): Usuario
+        # Modificar un Usuario
+        modificarUsuario(input: UsuarioInput): Usuario
+        # Eliminar un Usuario
+        eliminarUsuario( id : ID! ): String
+    }
+
+    input UsuarioInput {
+        id: ID
+        nombre: String!
+        apellido: String!
+        empresa: String!
+        edad: Int!
+        emails: [Emails]!
+        tipo : TipoUsuario!
+    }
+
+    input Emails {
+        email: String
+    }
